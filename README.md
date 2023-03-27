@@ -1,5 +1,8 @@
 # Fullstack (springboot, hibernate, JWT, API Rest)
 
+Curso sobre como crear un sistema de usuario completo en Java con springboot, hibernate, JWT y API Rest.
+
+
 ## Base
 
 Proyecto basado en: 'https://www.youtube.com/watch?v=7vHzVN0EiQc&ab_channel=ATLAcademy%28byLucasMoy%29'
@@ -19,8 +22,9 @@ Proyecto basado en: 'https://www.youtube.com/watch?v=7vHzVN0EiQc&ab_channel=ATLA
 - M
 - V
 - C: Controlladores -> Se encarga de la gestion/logica cuando el usuario usa la url:'myappweb/usuario'
+	- Los controladores vevuelven los recursos para trabajar en el front, ej: lista, datos
 	- Notación Springboot para denotar que la clase es controller: `@RestController`
-	- Notación Sprongboot para indicar el metodo que devuelve la respuesta a la url indicada: `@RequestMapping(value = "url indicada")` 
+	- Notación Springboot para indicar el metodo que responde al resquest del front segun la url indicada: `@RequestMapping(value = "url indicada")` 
 	
 
 ## Estrutura de archivos
@@ -35,8 +39,8 @@ Proyecto basado en: 'https://www.youtube.com/watch?v=7vHzVN0EiQc&ab_channel=ATLA
 
 ## Comandos Spring boot
 
-- iniciar app web: `spring-boot:run
-- detener app web: `spring-boot:stop
+- iniciar app web: `mvn spring-boot:run`
+- limpiar proyecto para recompilar: `mvn:clean`
 
 Aplicación: Apache Tomcat: puerto 8080
 
