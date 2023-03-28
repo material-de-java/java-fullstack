@@ -1,29 +1,53 @@
 package com.cursojava.curso.Models;
 
-import org.springframework.web.bind.annotation.RestController;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
-@RestController
+@Entity
+@Table(name = "templeados")
+@ToString @EqualsAndHashCode
 public class Usuario {
 
+    @Getter @Setter @Column(name = "id")
+    @Id
     private int id;
+
+    @Getter @Setter @Column(name = "nombres")
     private String nombre;
+
+    @Getter @Setter @Column(name = "apellidos")
     private String apellido;
+
+    @Getter @Setter @Column(name = "telefono")
     private Long telefono;
+
+    @Getter @Setter @Column(name = "correo")
     private String correo;
-    private String password;
+
+    @Getter @Setter @Column(name = "passw")
+    private String passw;
 
     public Usuario() {
     }
 
-    public Usuario(int id, String nombre, String apellido, Long telefono, String correo, String password) {
+    public Usuario(int id, String nombre, String apellido, Long telefono, String correo, String passw) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.telefono = telefono;
         this.correo = correo;
-        this.password = password;
+        this.passw = passw;
     }
 
+
+
+    /* REEMPLAZO POP NOTACION GETTER Y SETTER
     public int getId() {
         return id;
     }
@@ -71,4 +95,5 @@ public class Usuario {
     public void setPassword(String password) {
         this.password = password;
     }
+     */
 }
