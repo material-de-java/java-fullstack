@@ -1,25 +1,34 @@
 package com.cursojava.curso.Controllers;
 
-import com.cursojava.curso.Models.Usuario;
+import com.cursojava.curso.DAO.EmpleadoDAO;
+import com.cursojava.curso.Models.Empleado;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-public class UsuarioController {
+public class EmpleadoController {
+
+    //esta notacion crea un objeto almacena automaticamente, este objeto es compartido en memoria
+    @Autowired
+    private EmpleadoDAO usuarioDAO;
 
     @RequestMapping(value = "usuario/{id}")
-    public Usuario getUsuario(@PathVariable int id){
-        Usuario us = new Usuario(id, "Pedro", "Picasso", 6177L, "pedro@picasso.net", "abc123");
+    public Empleado getUsuario(@PathVariable int id){
+        Empleado us = new Empleado(id, "Pedro", "Picasso", 6177L, "pedro@picasso.net", "abc123");
         return us;
     }
 
     @RequestMapping(value = "usuarios")
-    public List<Usuario> getListaUsuarios(){
+    public List<Empleado> getListaUsuarios(){
 
+
+        List<Empleado> us = usuarioDAO.getListaUsuarios();
+        /*
         List<Usuario> usuarios = new ArrayList<>();
         Usuario us1 = new Usuario(111, "Pedro", "Picasso", 6166L,"pedro@correo.net", "abc123");
         Usuario us2 = new Usuario(222, "Pablo", "Moreno", 6155L, "pablo@correo.net", "abc456");
@@ -28,25 +37,25 @@ public class UsuarioController {
         usuarios.add(us1);
         usuarios.add(us2);
         usuarios.add(us3);
-
-        return usuarios;
+         */
+        return us;
     }
 
     @RequestMapping(value = "usuario0")
-    public Usuario editUsuario(){
-        Usuario us = new Usuario();
+    public Empleado editUsuario(){
+        Empleado us = new Empleado();
         return us;
     }
 
     @RequestMapping(value = "usuario1")
-    public Usuario deleteUsuario(){
-        Usuario us = new Usuario();
+    public Empleado deleteUsuario(){
+        Empleado us = new Empleado();
         return us;
     }
 
     @RequestMapping(value = "usuario2")
-    public Usuario findUsuario(){
-        Usuario us = new Usuario();
+    public Empleado findUsuario(){
+        Empleado us = new Empleado();
         return us;
     }
 

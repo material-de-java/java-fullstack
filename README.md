@@ -91,7 +91,12 @@ Patron de arquitectura Modelo, Vista y Controlador. Peticion por URL que retorna
 
 - Controlador en java
   - Notación Springboot para denotar que la clase es controller: `@RestController`
-  - Notación Springboot para indicar el metodo que responde al resquest del front segun la url indicada: `@RequestMapping(value = "url-indicada/otro-dato")` 
+  - Notación Springboot para indicar el metodo que responde al resquest del front segun la url indicada: `@RequestMapping(value = "url-indicada/otro-dato")`
+  - La clase- *DAO implement* implementa la interfaz *DAO* esto se hace para cada Modelo
+  - Notación en el *DAO implement* para indicar que la clase se usa para tratar con la BD y su conexión: `@Repository` y `@Transactional`
+- Modelo en java
+  - Notación en la clase Model para indicar que propiedades son que columnas de la tabla: `@Entity` y `@Table(name = "usuarios")`
+  - Notación en la clase Model para indicar se usa una propiedad como ID con: `@Id`
 - Otras en java
   - Indicar que el parametro de la función (otro-dato) se usa como parametro de la url que llega: `@PathVariable`
 
@@ -105,6 +110,15 @@ Patron de arquitectura REST. Peticion por AJAX o Fetch que retorna json. Es much
 - M: Es donde esta definida la entidad que corresponda a la BD y las entidades son devueltas al Repositorio
 
 ![REST](./media/rest.png)
+
+# Uso de principio SOLID
+
+1. Principio de responsabilidad única:Consiste en que una modulo/clase debe ser responsable solo de una parte de la funcionalidad del código. Con esto, si llega a existir una razón para cambiar algo, no será necesario reescribir todo.
+2. Principio de abierto/cerrado: Hace referencia a que una modulo/clase debe tener la posibilidad de extenderse, pero no de modificarse.
+3. Principio de sustitución de Liskov.Establece que cada subclase puede reemplazarse por la clase base sin que se altere el comportamiento del programa.
+4. Principio de segregación de la interfaz: Una interfaz grande se puede dividir en partes pequeñas para que cada una se preocupe por el método que le interesa.
+5. Principio de inversión de la dependencia: Mantener los modulos/capas desacoplados. Los módulos de alto nivel (logica de negocio) no deberían depender de los módulos de bajo nivel (ej: como se hace una implentación).
+   1. En este proyecto se usa con el patron *inversion de control* con las clases DAOImpl que implentan la interfaz DAO de cada modelo, la inyección de dependecias ser hace con la variable *UsuarioDAO usuarioDAO* dentro del Controller
 
 # BD
 

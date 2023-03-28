@@ -12,7 +12,7 @@ import lombok.ToString;
 @Entity
 @Table(name = "templeados")
 @ToString @EqualsAndHashCode
-public class Usuario {
+public class Empleado {
 
     @Getter @Setter @Column(name = "id")
     @Id
@@ -33,10 +33,10 @@ public class Usuario {
     @Getter @Setter @Column(name = "passw")
     private String passw;
 
-    public Usuario() {
+    public Empleado() {
     }
 
-    public Usuario(int id, String nombre, String apellido, Long telefono, String correo, String passw) {
+    public Empleado(int id, String nombre, String apellido, Long telefono, String correo, String passw) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
