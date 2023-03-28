@@ -1,4 +1,4 @@
-package com.cursojava.curso.dao;
+package com.cursojava.curso.DAO;
 
 import java.util.List;
 

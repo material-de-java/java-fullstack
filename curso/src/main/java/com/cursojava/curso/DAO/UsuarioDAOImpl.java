@@ -1,11 +1,11 @@
-package com.cursojava.curso.dao;
+package com.cursojava.curso.DAO;
 
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.cursojava.curso.Models.Usuario;
+import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 @Transactional
