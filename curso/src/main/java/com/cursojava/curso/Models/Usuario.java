@@ -8,17 +8,17 @@ public class Usuario {
     private int id;
     private String nombre;
     private String apellido;
-    private String email;
+    private String correo;
     private String password;
 
     public Usuario() {
     }
 
-    public Usuario(int id, String nombre, String apellido, String email, String password) {
+    public Usuario(int id, String nombre, String apellido, String correo, String password) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
-        this.email = email;
+        this.correo = correo;
         this.password = password;
     }
 
@@ -46,12 +46,12 @@ public class Usuario {
         this.apellido = apellido;
     }
 
-    public String getEmail() {
-        return email;
+    public String getCorreo() {
+        return correo;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setCorreo(String correo) {
+        this.correo = correo;
     }
 
     public String getPassword() {
