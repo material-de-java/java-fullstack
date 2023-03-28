@@ -13,7 +13,7 @@ public class UsuarioController {
 
     @RequestMapping(value = "usuario/{id}")
     public Usuario getUsuario(@PathVariable int id){
-        Usuario us = new Usuario(id, "Pedro", "Picasso", "pedro@picasso.net", "abc123");
+        Usuario us = new Usuario(id, "Pedro", "Picasso", 6177L, "pedro@picasso.net", "abc123");
         return us;
     }
 
@@ -21,9 +21,9 @@ public class UsuarioController {
     public List<Usuario> getListaUsuarios(){
 
         List<Usuario> usuarios = new ArrayList<>();
-        Usuario us1 = new Usuario(111, "Pedro", "Picasso", "pedro@correo.net", "abc123");
-        Usuario us2 = new Usuario(222, "Pablo", "Moreno", "pablo@correo.net", "abc456");
-        Usuario us3 = new Usuario(333, "Victor", "Sierra", "victor@correo.net", "abc789");
+        Usuario us1 = new Usuario(111, "Pedro", "Picasso", 6166L,"pedro@correo.net", "abc123");
+        Usuario us2 = new Usuario(222, "Pablo", "Moreno", 6155L, "pablo@correo.net", "abc456");
+        Usuario us3 = new Usuario(333, "Victor", "Sierra", 6144L, "victor@correo.net", "abc789");
 
         usuarios.add(us1);
         usuarios.add(us2);

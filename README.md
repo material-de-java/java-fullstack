@@ -15,6 +15,7 @@ Proyecto basado en: 'https://www.youtube.com/watch?v=7vHzVN0EiQc&ab_channel=ATLA
 5. Inicializar proyecto con: 'https://start.spring.io/'
 6. Dependencias con MAVEN (3.9.1) y Empaquetado WAR - openJDK 17.0.6
 7. Front Booststrap
+8. Mysql
 
 ## Estrutura de archivos
 
@@ -32,7 +33,6 @@ Proyecto basado en: 'https://www.youtube.com/watch?v=7vHzVN0EiQc&ab_channel=ATLA
 - limpiar proyecto para recompilar: `mvn:clean`
 
 Aplicación: Apache Tomcat: puerto 8080
-
 
 # XML vs JSON
 
@@ -78,7 +78,6 @@ Query: Usando ? se envian parametros y su información, se separa parametros con
 - PATCH: Modificar, ej: modificar algunos datos de una entidad
 - DELETE: Eliminar, ej: eliminar una entidad 
 
-
 # Arquitectura MVC
 
 Patron de arquitectura Modelo, Vista y Controlador. Peticion por URL que retorna html.
@@ -86,15 +85,15 @@ Patron de arquitectura Modelo, Vista y Controlador. Peticion por URL que retorna
 - M: Se encarga de realizar las operaciones de los datos en la BD y le devuelve informarción al Controlador
 - V: Se encarga de generar el html que envia al cliente para ser mostrado, toma la información del Controlador
 - C: Se encarga de la gestion/logica cuando el usuario usa la url:'myappweb/usuario', la interacción con la BD se delega al Modelo
-	- Los controladores vevuelven los recursos para trabajar en el front, ej: lista, datos
-	
+  - Los controladores vevuelven los recursos para trabajar en el front, ej: lista, datos
+
 ![MVC](./media/mvc.png)
-	
+
 - Controlador en java
-	- Notación Springboot para denotar que la clase es controller: `@RestController`
-	- Notación Springboot para indicar el metodo que responde al resquest del front segun la url indicada: `@RequestMapping(value = "url-indicada/otro-dato")` 
+  - Notación Springboot para denotar que la clase es controller: `@RestController`
+  - Notación Springboot para indicar el metodo que responde al resquest del front segun la url indicada: `@RequestMapping(value = "url-indicada/otro-dato")` 
 - Otras en java
-	- Indicar que el parametro de la función (otro-dato) se usa como parametro de la url que llega: `@PathVariable`
+  - Indicar que el parametro de la función (otro-dato) se usa como parametro de la url que llega: `@PathVariable`
 
 # Arquitectura REST
 
@@ -107,7 +106,18 @@ Patron de arquitectura REST. Peticion por AJAX o Fetch que retorna json. Es much
 
 ![REST](./media/rest.png)
 
+# BD
 
+- XAMPP 8.2.2.0-0 -> Mysql:3306
+- BD: EMPRESAABC, utf8_bin
+  - tusuarios
+    - id: INT
+    - nombres: VARCHAR(100)
+    - apellidos: VARCHAR(100)
+    - telefono: BIGINT UNSIGNED
+    - correo: VARCHAR(100)
+    - passw: VARCHAR(40)
+- 
 
 
 

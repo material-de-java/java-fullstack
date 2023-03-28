@@ -8,16 +8,18 @@ public class Usuario {
     private int id;
     private String nombre;
     private String apellido;
+    private Long telefono;
     private String correo;
     private String password;
 
     public Usuario() {
     }
 
-    public Usuario(int id, String nombre, String apellido, String correo, String password) {
+    public Usuario(int id, String nombre, String apellido, Long telefono, String correo, String password) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
+        this.telefono = telefono;
         this.correo = correo;
         this.password = password;
     }
@@ -48,6 +50,14 @@ public class Usuario {
 
     public String getCorreo() {
         return correo;
+    }
+
+    public void setTelefono(Long telefono) {
+        this.telefono = telefono;
+    }
+
+    public Long getTelefono() {
+        return telefono;
     }
 
     public void setCorreo(String correo) {
