@@ -108,7 +108,7 @@ Patron de arquitectura Modelo, Vista y Controlador. Peticion por URL que retorna
 
 ## Modelo en java
 
-- Notación en la clase Model para indicar que propiedades son que columnas de la tabla: `@Entity` y `@Table(name = "Usuario")`
+- Notación en la clase Model para indicar que propiedades son que columnas de la tabla: `@Entity` y `@Table(name = "templeados")` //se coloca el nombrde de la tabla de la BD
 - Notación en la clase Model para indicar se usa una propiedad como ID con: `@Id`
 
 ## Otras en java

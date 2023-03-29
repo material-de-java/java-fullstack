@@ -1,13 +1,14 @@
 // Call the dataTables jQuery plugin
 $(document).ready(function() {
     cargarEmpleados();
-  $('#templeados').DataTable();
+  $('#tabla-empleados').DataTable();
 });
 
 
 async function cargarEmpleados(){
 
-      const respuesta = await fetch('empleados', {
+      // en fetch se usa el valor del RequestMapping del metodo del controller 
+      const respuesta = await fetch('usuarios', {
         method: 'GET',
         headers: {
           'Accept': 'application/json',
@@ -16,6 +17,9 @@ async function cargarEmpleados(){
       });
       const empleados = await respuesta.json();
 
+      console.log('#tabla-empleados');
+      console.log(empleados);
+
       let listadoHtml= '';
       for (let emp of empleados) {
         let empleadoHtml = '<tr> <td>'+emp.id+'</td> <td>'+emp.nombre+'</td> <td>'+emp.apellido+'</td> <td>'+emp.telefono+'</td> <td>'+emp.correo+'</td> <td> <a href="#" class="btn btn-danger btn-circle"> <i class="fas fa-trash"></i> </a> </td> </tr>';
@@ -23,9 +27,6 @@ async function cargarEmpleados(){
         listadoHtml += empleadoHtml;
         
       }
-
-      console.log('templeados');
-      console.log(empleados);
       
-      document.querySelector('#templeados tbody').outerHTML = listadoHtml;
+      document.querySelector('#tabla-empleados tbody').outerHTML = listadoHtml;
 }
