@@ -92,7 +92,7 @@ Patron de arquitectura Modelo, Vista y Controlador. Peticion por URL que retorna
 ## Controlador en java
 
 - Indica que es controller: `@RestController`
-- Indicar que el metodo que responde al resquest del front segun la url indicada: `@RequestMapping(value = "url-indicada/otro-dato")`
+- Indicar que el metodo que responde al resquest del front segun la url indicada: `@RequestMapping(value = "api/usuarios/{otro-valor}", method = RequestMethod.GET)` Se usa get para indicar que es metodo de consulta
 - Indicar que el parametro del metodo (otro-dato) se usa como parametro de la url que llega: `@PathVariable otro-dato`
 - La consultas a la BD se hacen a travez de la variable *EmpleadoDAO empleadoDAO*, estos metodos son los que define la interfaz *DAO*
 

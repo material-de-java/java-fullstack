@@ -25,5 +25,11 @@ public class EmpleadoDAOImpl implements EmpleadoDAO{
         List<Empleado> result = entityMan.createQuery(consulta).getResultList();
         return result;
     }
+
+    @Override
+    public void deleteUsuario(int id) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'deleteUsuario'");
+    }
     
 }

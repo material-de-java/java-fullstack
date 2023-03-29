@@ -7,5 +7,7 @@ import com.cursojava.curso.Models.Empleado;
 public interface EmpleadoDAO {
 
     List<Empleado> getListaEmpleados();
+
+    void deleteUsuario(int id);
     
 }

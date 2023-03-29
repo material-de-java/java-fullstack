@@ -8,7 +8,7 @@ $(document).ready(function() {
 async function cargarEmpleados(){
 
       // en fetch se usa el valor del RequestMapping del metodo del controller 
-      const respuesta = await fetch('usuarios', {
+      const respuesta = await fetch('api/usuarios', {
         method: 'GET',
         headers: {
           'Accept': 'application/json',

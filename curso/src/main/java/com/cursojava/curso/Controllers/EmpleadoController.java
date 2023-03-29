@@ -6,6 +6,7 @@ import com.cursojava.curso.Models.Empleado;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -17,13 +18,13 @@ public class EmpleadoController {
     @Autowired
     private EmpleadoDAO empleadoDAO;
 
-    @RequestMapping(value = "usuario/{id}")
+    @RequestMapping(value = "api/usuarios/{id}", method = RequestMethod.GET)
     public Empleado getUsuario(@PathVariable int id){
         Empleado us = new Empleado(id, "Pedro", "Picasso", 6177L, "pedro@picasso.net", "abc123");
         return us;
     }
 
-    @RequestMapping(value = "usuarios")
+    @RequestMapping(value = "api/usuarios", method = RequestMethod.GET)
     public List<Empleado> getListaUsuarios(){
 
         List<Empleado> us = empleadoDAO.getListaEmpleados();
@@ -40,19 +41,18 @@ public class EmpleadoController {
         return us;
     }
 
-    @RequestMapping(value = "usuario0")
+    @RequestMapping(value = "api/usuario0")
     public Empleado editUsuario(){
         Empleado us = new Empleado();
         return us;
     }
 
-    @RequestMapping(value = "usuario1")
-    public Empleado deleteUsuario(){
-        Empleado us = new Empleado();
-        return us;
+    @RequestMapping(value = "api/usuarios/{id}", method = RequestMethod.DELETE)
+    public void deleteUsuario(@PathVariable int id){
+        empleadoDAO.deleteUsuario(id);
     }
 
-    @RequestMapping(value = "usuario2")
+    @RequestMapping(value = "api/usuario2")
     public Empleado findUsuario(){
         Empleado us = new Empleado();
         return us;
