@@ -113,6 +113,7 @@ Patron de arquitectura Modelo, Vista y Controlador. Peticion por URL que retorna
 
 ## Otras en java
 
+- En *Application.properties* se define el puerto de la aplicación web, por dejecto es *80*, aca es *8080*
 - En *Application.properties* se define la conexión a la BD, en ningun otro lado mas se debe hacer algo
 
 # Arquitectura REST
