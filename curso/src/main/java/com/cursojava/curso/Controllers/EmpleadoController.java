@@ -15,7 +15,7 @@ public class EmpleadoController {
 
     //esta notacion crea un objeto almacena automaticamente, este objeto es compartido en memoria
     @Autowired
-    private EmpleadoDAO usuarioDAO;
+    private EmpleadoDAO empleadoDAO;
 
     @RequestMapping(value = "usuario/{id}")
     public Empleado getUsuario(@PathVariable int id){
@@ -26,17 +26,16 @@ public class EmpleadoController {
     @RequestMapping(value = "usuarios")
     public List<Empleado> getListaUsuarios(){
 
-
-        List<Empleado> us = usuarioDAO.getListaUsuarios();
+        List<Empleado> us = empleadoDAO.getListaEmpleados();
         /*
-        List<Usuario> usuarios = new ArrayList<>();
-        Usuario us1 = new Usuario(111, "Pedro", "Picasso", 6166L,"pedro@correo.net", "abc123");
-        Usuario us2 = new Usuario(222, "Pablo", "Moreno", 6155L, "pablo@correo.net", "abc456");
-        Usuario us3 = new Usuario(333, "Victor", "Sierra", 6144L, "victor@correo.net", "abc789");
+        List<Usuario> Empleado = new ArrayList<>();
+        Usuario us1 = new Empleado(111, "Pedro", "Picasso", 6166L,"pedro@correo.net", "abc123");
+        Usuario us2 = new Empleado(222, "Pablo", "Moreno", 6155L, "pablo@correo.net", "abc456");
+        Usuario us3 = new Empleado(333, "Victor", "Sierra", 6144L, "victor@correo.net", "abc789");
 
-        usuarios.add(us1);
-        usuarios.add(us2);
-        usuarios.add(us3);
+        us.add(us1);
+        us.add(us2);
+        us.add(us3);
          */
         return us;
     }

@@ -14,8 +14,8 @@ import lombok.ToString;
 @ToString @EqualsAndHashCode
 public class Empleado {
 
-    @Getter @Setter @Column(name = "id")
     @Id
+    @Getter @Setter @Column(name = "id")
     private int id;
 
     @Getter @Setter @Column(name = "nombres")

@@ -16,11 +16,12 @@ import org.springframework.transaction.annotation.Transactional;
 public class EmpleadoDAOImpl implements EmpleadoDAO{
 
     @PersistenceContext
-    private EntityManager entityMan;
+    EntityManager entityMan;
 
     @Override
-    public List<Empleado> getListaUsuarios() {
-        String consulta = "FROM templeados";
+    @Transactional
+    public List<Empleado> getListaEmpleados() {
+        String consulta = "FROM Empleado"; //nombre de la clase
         List<Empleado> result = entityMan.createQuery(consulta).getResultList();
         return result;
     }

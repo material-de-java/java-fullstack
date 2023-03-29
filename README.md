@@ -89,16 +89,31 @@ Patron de arquitectura Modelo, Vista y Controlador. Peticion por URL que retorna
 
 ![MVC](./media/mvc.png)
 
-- Controlador en java
-  - Notación Springboot para denotar que la clase es controller: `@RestController`
-  - Notación Springboot para indicar el metodo que responde al resquest del front segun la url indicada: `@RequestMapping(value = "url-indicada/otro-dato")`
-  - La clase- *DAO implement* implementa la interfaz *DAO* esto se hace para cada Modelo
-  - Notación en el *DAO implement* para indicar que la clase se usa para tratar con la BD y su conexión: `@Repository` y `@Transactional`
-- Modelo en java
-  - Notación en la clase Model para indicar que propiedades son que columnas de la tabla: `@Entity` y `@Table(name = "usuarios")`
-  - Notación en la clase Model para indicar se usa una propiedad como ID con: `@Id`
-- Otras en java
-  - Indicar que el parametro de la función (otro-dato) se usa como parametro de la url que llega: `@PathVariable`
+## Controlador en java
+
+- Indica que es controller: `@RestController`
+- Indicar que el metodo que responde al resquest del front segun la url indicada: `@RequestMapping(value = "url-indicada/otro-dato")`
+- Indicar que el parametro del metodo (otro-dato) se usa como parametro de la url que llega: `@PathVariable otro-dato`
+- La consultas a la BD se hacen a travez de la variable *EmpleadoDAO empleadoDAO*, estos metodos son los que define la interfaz *DAO*
+
+## Controlador/Base da datos *DAO*
+
+- La clase *DAO* define los metodos que van a implementar las clases comunes entre todas los modelos
+- La clase *DAO implement* implementa la interfaz *DAO* esto se hace para cada Modelo
+- Notación en el *DAO implement* para indicar que la clase se usa para tratar con la BD
+- En *DAO implement* se indica que la clase trata con la BD con `@Repository` y `@Transactional`
+- Se crea la variable *EntityManager entityMan* para usar como dependencia inyectada para tratar los asuntos con las BD a travez de esta
+- A la variable *EntityManager entityMan* se le indica su funciona de tratar con la BD con `@PersistenceContext`
+- Los metodos que deben tratar con la BD usan la variable *EntityManager entityMan* y se le indica al metodo que hacen uso de la BD con `@Transactional`
+
+## Modelo en java
+
+- Notación en la clase Model para indicar que propiedades son que columnas de la tabla: `@Entity` y `@Table(name = "Usuario")`
+- Notación en la clase Model para indicar se usa una propiedad como ID con: `@Id`
+
+## Otras en java
+
+- 
 
 # Arquitectura REST
 

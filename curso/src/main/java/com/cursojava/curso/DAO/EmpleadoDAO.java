@@ -6,6 +6,6 @@ import com.cursojava.curso.Models.Empleado;
 
 public interface EmpleadoDAO {
 
-    List<Empleado> getListaUsuarios();
+    List<Empleado> getListaEmpleados();
     
 }
