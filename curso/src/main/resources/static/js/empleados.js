@@ -22,19 +22,20 @@ async function cargarEmpleados(){
 
   let listadoHtml= '';
 
-  // en caso de que algun campo mostrado sea null muestra un guion
-  let nombre = emp.nombre == null ? '-' : emp.nombre
-  let apellido = emp.apellido == null ? '-' : emp.apellido
-  let telefono = emp.telefono == null ? '-' : emp.telefono
-  let correo = emp.correo == null ? '-' : emp.correo
-
   for (let emp of empleados) {
+
+
+    // en caso de que algun campo mostrado sea null muestra un guion
+    let nombre = emp.nombre == null ? '-' : emp.nombre
+    let apellido = emp.apellido == null ? '-' : emp.apellido
+    let telefono = emp.telefono == null ? '-' : emp.telefono
+    let correo = emp.correo == null ? '-' : emp.correo
+
     let htmlOnClick=' onclick="eliminarEmpleado('+emp.id+')" ';
     let botonDelete='<a href="#"'+htmlOnClick+'class="btn btn-danger btn-circle"> <i class="fas fa-trash"></i> </a>';
-    let empleadoHtml = '<tr> <td>'+emp.id+'</td> <td>'+emp.nombre+'</td> <td>'+emp.apellido+'</td> <td>'+emp.telefono+'</td> <td>'+emp.correo+'</td> <td> '+botonDelete+' </td> </tr>';
+    let empleadoHtml = '<tr> <td>'+emp.id+'</td> <td>'+nombre+'</td> <td>'+apellido+'</td> <td>'+telefono+'</td> <td>'+correo+'</td> <td> '+botonDelete+' </td> </tr>';
 
-    listadoHtml += empleadoHtml;
-    
+    listadoHtml += empleadoHtml;    
   }
 
   document.querySelector('#tabla-empleados tbody').outerHTML = listadoHtml;

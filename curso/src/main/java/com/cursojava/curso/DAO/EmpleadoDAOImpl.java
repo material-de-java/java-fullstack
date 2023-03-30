@@ -40,5 +40,21 @@ public class EmpleadoDAOImpl implements EmpleadoDAO{
         //busca agrega el empleado a la BD
         entityMan.merge(emp);
     }
+
+    @Override
+    @Transactional
+    public boolean verificarLogin(Empleado emp) {
+        
+        String consulta = "FROM Empleado WHERE correo= :correoIn AND passw= :passwIn";
+
+        // se usa setParameter para evitar inyeccion de codigo
+        List<Empleado> lista = entityMan.createQuery(consulta)
+        .setParameter("correoIn", emp.getCorreo())
+        .setParameter("passwIn", emp.getPassw())
+        .getResultList();
+
+        // si la lista esta vacia es que no hay ninguna coincidencia
+        return !lista.isEmpty();
+    }
     
 }

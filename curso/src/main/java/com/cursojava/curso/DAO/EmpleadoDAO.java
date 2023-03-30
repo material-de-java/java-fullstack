@@ -11,5 +11,7 @@ public interface EmpleadoDAO {
     void deleteEmpleado(int id);
 
     void addEmpleado(Empleado emp);
+
+    boolean verificarLogin(Empleado emp);
     
 }
