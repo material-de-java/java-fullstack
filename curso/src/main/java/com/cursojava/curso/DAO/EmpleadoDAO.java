@@ -9,5 +9,7 @@ public interface EmpleadoDAO {
     List<Empleado> getListaEmpleados();
 
     void deleteUsuario(int id);
+
+    void addUsuario();
     
 }

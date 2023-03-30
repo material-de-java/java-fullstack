@@ -5,7 +5,8 @@ Curso sobre como crear un sistema de usuario completo en Java con springboot, hi
 ## Base
 
 Proyecto basado en: 'https://www.youtube.com/watch?v=7vHzVN0EiQc&ab_channel=ATLAcademy%28byLucasMoy%29' \
-Init: 'https://start.spring.io/'
+Init: 'https://start.spring.io/' \
+Front: Simple con HTML, JS, Booststrp: 'https://startbootstrap.com/theme/sb-admin-2'
 
 ## Contenido de aprenfizaje
 

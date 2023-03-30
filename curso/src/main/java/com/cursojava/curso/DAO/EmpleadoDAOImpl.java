@@ -33,5 +33,11 @@ public class EmpleadoDAOImpl implements EmpleadoDAO{
         Empleado emp = entityMan.find(Empleado.class, id);
         entityMan.remove(emp);
     }
+
+    @Override
+    public void addUsuario() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'addUsuario'");
+    }
     
 }
