@@ -28,16 +28,16 @@ public class EmpleadoDAOImpl implements EmpleadoDAO{
 
     @Override
     @Transactional
-    public void deleteUsuario(int id) {
-        //forma 1, busca el usuario por id
+    public void deleteEmpleado(int id) {
+        //busca el empleado por id. Luego lo elimina
         Empleado emp = entityMan.find(Empleado.class, id);
         entityMan.remove(emp);
     }
 
     @Override
-    public void addUsuario() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'addUsuario'");
+    public void addEmpleado(Empleado emp) {
+        //busca agrega el empleado a la BD
+        entityMan.merge(emp);
     }
     
 }

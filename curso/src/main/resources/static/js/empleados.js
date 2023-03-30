@@ -22,6 +22,12 @@ async function cargarEmpleados(){
 
   let listadoHtml= '';
 
+  // en caso de que algun campo mostrado sea null muestra un guion
+  let nombre = emp.nombre == null ? '-' : emp.nombre
+  let apellido = emp.apellido == null ? '-' : emp.apellido
+  let telefono = emp.telefono == null ? '-' : emp.telefono
+  let correo = emp.correo == null ? '-' : emp.correo
+
   for (let emp of empleados) {
     let htmlOnClick=' onclick="eliminarEmpleado('+emp.id+')" ';
     let botonDelete='<a href="#"'+htmlOnClick+'class="btn btn-danger btn-circle"> <i class="fas fa-trash"></i> </a>';

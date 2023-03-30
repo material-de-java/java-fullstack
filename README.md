@@ -95,7 +95,8 @@ Patron de arquitectura Modelo, Vista y Controlador. Peticion por URL que retorna
 
 - Indica que es controller: `@RestController`
 - Indicar que el metodo que responde al resquest del front segun la url indicada: `@RequestMapping(value = "api/usuarios/{otro-valor}", method = RequestMethod.GET)` Se usa get para indicar que es metodo de consulta
-- Indicar que el parametro del metodo (otro-dato) se usa como parametro de la url que llega: `@PathVariable otro-dato`
+- Para recibir datos por url get, indicar que el parametro del metodo (otro-dato) se usa como parametro de la url que llega: `@PathVariable otro-dato`
+- Para recibir una entidad por post, indicar que el parametro del metodo se contruye y convierte en una entidad, se usa `@RequestBody Empleado emp`
 - La consultas a la BD se hacen a travez de la variable *EmpleadoDAO empleadoDAO*, estos metodos son los que define la interfaz *DAO*
 
 ## Controlador/Base da datos *DAO*
@@ -122,10 +123,10 @@ Patron de arquitectura Modelo, Vista y Controlador. Peticion por URL que retorna
 
 Patron de arquitectura REST. Peticion por AJAX o Fetch que retorna json. Es mucho mas dinamico. Ideal para aplicaciones web y movil.
 
-- C: Se encarga de redirigir por rutas segun la peticion del cliente y deriva al Servicio.
-- S: Se encarga de realizar la logica con datos
-- R: Se encarga de realizar la logica de los datos en la BD, los datos de las entidades son delegados al Modelo
-- M: Es donde esta definida la entidad que corresponda a la BD y las entidades son devueltas al Repositorio
+- C (controller): Se encarga de redirigir por rutas segun la peticion del cliente y deriva al Servicio.
+- S (service): Se encarga de realizar la logica con datos
+- R (repository): Se encarga de realizar la logica de los datos en la BD, los datos de las entidades son delegados al Modelo
+- M (model): Es donde esta definida la entidad que corresponda a la BD y las entidades son devueltas al Repositorio
 
 ![REST](./media/rest.png)
 

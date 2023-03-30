@@ -8,8 +8,8 @@ public interface EmpleadoDAO {
 
     List<Empleado> getListaEmpleados();
 
-    void deleteUsuario(int id);
+    void deleteEmpleado(int id);
 
-    void addUsuario();
+    void addEmpleado(Empleado emp);
     
 }
