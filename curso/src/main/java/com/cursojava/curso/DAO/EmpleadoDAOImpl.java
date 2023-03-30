@@ -27,6 +27,7 @@ public class EmpleadoDAOImpl implements EmpleadoDAO{
     }
 
     @Override
+    @Transactional
     public void deleteUsuario(int id) {
         //forma 1, busca el usuario por id
         Empleado emp = entityMan.find(Empleado.class, id);

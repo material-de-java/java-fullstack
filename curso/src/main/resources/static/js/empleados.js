@@ -35,16 +35,19 @@ async function cargarEmpleados(){
 }
 
 async function eliminarEmpleado(id){
-  // en fetch se usa el valor del RequestMapping del metodo del controller 
-  const respuesta = await fetch('api/empleados/'+id, {
-    method: 'DELETE',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-  });
 
-  const empleados = await respuesta.json();
+  let mensajeDelete='¿Esta seguro que desea eliminar al Empleado?';
 
-  alert(id);
+  if(confirm(mensajeDelete)){
+        // en fetch se usa el valor del RequestMapping del metodo del controller 
+    const respuesta = await fetch('api/empleados/'+id, {
+      method: 'DELETE',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+    });
+    location.reload();
+  }
+
 }
