@@ -28,8 +28,9 @@ public class EmpleadoDAOImpl implements EmpleadoDAO{
 
     @Override
     public void deleteUsuario(int id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deleteUsuario'");
+        //forma 1, busca el usuario por id
+        Empleado emp = entityMan.find(Empleado.class, id);
+        entityMan.remove(emp);
     }
     
 }

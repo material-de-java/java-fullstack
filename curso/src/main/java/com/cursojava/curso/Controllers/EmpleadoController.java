@@ -15,16 +15,17 @@ import java.util.List;
 public class EmpleadoController {
 
     //esta notacion crea un objeto almacena automaticamente, este objeto es compartido en memoria
+    // se crea una variable con el tipo de la interfaz
     @Autowired
     private EmpleadoDAO empleadoDAO;
 
-    @RequestMapping(value = "api/usuarios/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "api/empleados/{id}", method = RequestMethod.GET)
     public Empleado getUsuario(@PathVariable int id){
         Empleado us = new Empleado(id, "Pedro", "Picasso", 6177L, "pedro@picasso.net", "abc123");
         return us;
     }
 
-    @RequestMapping(value = "api/usuarios", method = RequestMethod.GET)
+    @RequestMapping(value = "api/empleados", method = RequestMethod.GET)
     public List<Empleado> getListaUsuarios(){
 
         List<Empleado> us = empleadoDAO.getListaEmpleados();
@@ -47,7 +48,7 @@ public class EmpleadoController {
         return us;
     }
 
-    @RequestMapping(value = "api/usuarios/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "api/empleados/{id}", method = RequestMethod.DELETE)
     public void deleteUsuario(@PathVariable int id){
         empleadoDAO.deleteUsuario(id);
     }

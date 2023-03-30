@@ -4,7 +4,8 @@ Curso sobre como crear un sistema de usuario completo en Java con springboot, hi
 
 ## Base
 
-Proyecto basado en: 'https://www.youtube.com/watch?v=7vHzVN0EiQc&ab_channel=ATLAcademy%28byLucasMoy%29'
+Proyecto basado en: 'https://www.youtube.com/watch?v=7vHzVN0EiQc&ab_channel=ATLAcademy%28byLucasMoy%29' \
+Init: 'https://start.spring.io/'
 
 ## Contenido de aprenfizaje
 
@@ -102,7 +103,7 @@ Patron de arquitectura Modelo, Vista y Controlador. Peticion por URL que retorna
 - La clase *DAO implement* implementa la interfaz *DAO* esto se hace para cada Modelo
 - Notación en el *DAO implement* para indicar que la clase se usa para tratar con la BD
 - En *DAO implement* se indica que la clase trata con la BD con `@Repository` y `@Transactional`
-- Se crea la variable *EntityManager entityMan* para usar como dependencia inyectada para tratar los asuntos con las BD a travez de esta
+- Se crea la variable de tipo de la interfaz *EntityManager entityMan* para usar como dependencia inyectada para tratar los asuntos con las BD a travez de esta
 - A la variable *EntityManager entityMan* se le indica su funciona de tratar con la BD con `@PersistenceContext`
 - Los metodos que deben tratar con la BD usan la variable *EntityManager entityMan* y se le indica al metodo que hacen uso de la BD con `@Transactional`
 
