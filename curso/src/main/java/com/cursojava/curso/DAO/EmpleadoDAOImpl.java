@@ -35,6 +35,7 @@ public class EmpleadoDAOImpl implements EmpleadoDAO{
     }
 
     @Override
+    @Transactional
     public void addEmpleado(Empleado emp) {
         //busca agrega el empleado a la BD
         entityMan.merge(emp);
