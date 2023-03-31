@@ -6,6 +6,8 @@ import org.springframework.stereotype.Repository;
 
 import com.cursojava.curso.Models.Empleado;
 
+import de.mkammerer.argon2.Argon2;
+import de.mkammerer.argon2.Argon2Factory;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 
@@ -44,7 +46,31 @@ public class EmpleadoDAOImpl implements EmpleadoDAO{
     @Override
     @Transactional
     public boolean verificarLogin(Empleado emp) {
-        
+
+        boolean result = false;
+
+        // se consulta solo el correo y contraseña - esto es con hash
+        String consulta = "FROM Empleado WHERE correo= :correoIn";
+
+        // se usa setParameter para evitar inyeccion de codigo
+        List<Empleado> lista = entityMan.createQuery(consulta)
+        .setParameter("correoIn", emp.getCorreo())
+        .getResultList();
+
+        // si la lista fuera vacia, daria nullpointerexception
+        if(!lista.isEmpty()){
+            // se saca el passw del emp que seria el passw con hash de la BD
+            String passwHashed = lista.get(0).getPassw();
+
+            Argon2 arg2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id);
+            // ahora se comparara el string de passw con el passHashed
+            result = arg2.verify(passwHashed, emp.getPassw().toCharArray());
+
+            System.out.println("CONTROLLER EMPL: rest="+result);
+        }
+
+        /*
+        // se consulta el correo y contraseña - esto es sin hash
         String consulta = "FROM Empleado WHERE correo= :correoIn AND passw= :passwIn";
 
         // se usa setParameter para evitar inyeccion de codigo
@@ -55,6 +81,9 @@ public class EmpleadoDAOImpl implements EmpleadoDAO{
 
         // si la lista esta vacia es que no hay ninguna coincidencia
         return !lista.isEmpty();
+         */
+
+        return result;
     }
     
 }

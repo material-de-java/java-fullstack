@@ -21,6 +21,8 @@ public class AuthController {
         
         result = empleadoDAO.verificarLogin(emp);
 
+        System.out.println("CONTROLLER AUTH: result="+result);
+
         return result;
     }
     

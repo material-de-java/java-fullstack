@@ -27,15 +27,16 @@ async function iniciarSesion(){
     body: JSON.stringify(datosLogin)
   });
 
-  const consulta = await respuesta.text().b;
+  const consulta = await respuesta.text();
 
+  console.log('EMPLEADO LOGIN: consulta ->');
   console.log(consulta);
   
   if(consulta=='true'){
     window.location.href = 'templeados.html'
   }
   else{
-    alert('Datos Incorrectos!')
+    alert('Datos Incorrectos!'+consulta)
   }
   
 }
