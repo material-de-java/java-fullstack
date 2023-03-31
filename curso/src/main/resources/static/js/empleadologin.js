@@ -27,9 +27,17 @@ async function iniciarSesion(){
     body: JSON.stringify(datosLogin)
   });
 
-  const consulta = await respuesta.json();
+  const consulta = await respuesta.text().b;
 
-
+  console.log(consulta);
+  
+  if(consulta=='true'){
+    window.location.href = 'templeados.html'
+  }
+  else{
+    alert('Datos Incorrectos!')
+  }
+  
 }
 
 
