@@ -36,10 +36,8 @@ async function registrarEmpleado(){
     body: JSON.stringify(datosEmp)
   });
 
-  //console.log('empleado ->');
-  //console.log(datosEmp);
-
-  location.reload();
+  alert('Empleado Agregado Correctamente!')
+  window.location.href = 'EmpleadoLogin.html'
 
 }
 

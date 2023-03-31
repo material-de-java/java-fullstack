@@ -36,7 +36,7 @@ async function iniciarSesion(){
     window.location.href = 'templeados.html'
   }
   else{
-    alert('Datos Incorrectos!'+consulta)
+    alert('Datos Incorrectos!')
   }
   
 }
