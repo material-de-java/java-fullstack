@@ -3,6 +3,9 @@ package com.cursojava.curso.Controllers;
 import com.cursojava.curso.DAO.EmpleadoDAO;
 import com.cursojava.curso.Models.Empleado;
 
+import de.mkammerer.argon2.Argon2;
+import de.mkammerer.argon2.Argon2Factory;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -45,6 +48,14 @@ public class EmpleadoController {
 
     @RequestMapping(value = "api/empleados", method = RequestMethod.POST)
     public void addEmpleado(@RequestBody Empleado emp){
+
+        Argon2 arg2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id);
+        
+        // se toma el passw, se convierte a char[] y luego se genera para guardarlo en el objeto
+        // el hash asegura almacenar la passw en la bd de manera segura
+        String hash = arg2.hash(6, 1024, 3, emp.getPassw().toCharArray());
+
+        emp.setPassw(hash);
         empleadoDAO.addEmpleado(emp);
     }
 

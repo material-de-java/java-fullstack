@@ -39,6 +39,8 @@ async function registrarEmpleado(){
   //console.log('empleado ->');
   //console.log(datosEmp);
 
+  location.reload();
+
 }
 
 

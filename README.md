@@ -1,6 +1,6 @@
 # Fullstack (springboot, hibernate, JWT, API Rest)
 
-Curso sobre como crear un sistema de usuario completo en Java con springboot, hibernate, JWT y API Rest con arquitectura MVC. CRUD con usarios y su inicio de sesión.
+Curso sobre como crear un sistema de usuario completo en Java con springboot, hibernate, JWT y API Rest con arquitectura MVC. CRUD con usarios y su inicio de sesión por hashes y tokens.
 
 ## Base
 
@@ -98,6 +98,7 @@ Patron de arquitectura Modelo, Vista y Controlador. Peticion por URL que retorna
 - Para recibir datos por url get, indicar que el parametro del metodo (otro-dato) se usa como parametro de la url que llega: `@PathVariable otro-dato`
 - Para recibir una entidad por post, indicar que el parametro del metodo se contruye y convierte en una entidad, se usa `@RequestBody Empleado emp`
 - La consultas a la BD se hacen a travez de la variable *EmpleadoDAO empleadoDAO*, estos metodos son los que define la interfaz *DAO*
+- La variable *EmpleadoDAO empleadoDAO* tiene la notación `@Autowired` para indicar que el objeto se instancia automaticamente y se comparte en memoria para ser usado por cualuier clase-
 
 ## Controlador/Base da datos *DAO*
 
@@ -116,7 +117,7 @@ Patron de arquitectura Modelo, Vista y Controlador. Peticion por URL que retorna
 
 ## Otras en java
 
-- En *Application.properties* se define el puerto de la aplicación web, por dejecto es *80*, aca es *8080*
+- En *Application.properties* se define el puerto de la aplicación web, por dejecto es *80*, aca es *5050*
 - En *Application.properties* se define la conexión a la BD, en ningun otro lado mas se debe hacer algo
 
 # Arquitectura REST
@@ -149,7 +150,7 @@ Patron de arquitectura REST. Peticion por AJAX o Fetch que retorna json. Es much
     - apellidos: VARCHAR(100)
     - telefono: BIGINT UNSIGNED
     - correo: VARCHAR(100)
-    - passw: VARCHAR(40)
+    - passw: VARCHAR(255) (se almacena el hash)
 - 
 
 
