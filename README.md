@@ -115,12 +115,14 @@ Patron de arquitectura Modelo, Vista y Controlador. Peticion por URL que retorna
 
 - Notación en la clase Model para indicar que propiedades son que columnas de la tabla: `@Entity` y `@Table(name = "templeados")` //se coloca el nombrde de la tabla de la BD
 - Notación en la clase Model para indicar se usa una propiedad como ID con: `@Id`
+- Usando `@Autowired` se aplica la inyección de dependecias
 
 ## Otras en java
 
 - En *Application.properties* se define el puerto de la aplicación web, por dejecto es *80*, aca es *5050*
 - En *Application.properties* se define la conexión a la BD, en ningun otro lado mas se debe hacer algo
-- De la clase JWT se deben incluir en *Application.properties* las propiedades marcadas con `@Value("${security.jwt.secret}")`, en este caso son: key, issuer y ttlMillis.
+- La notación `@component` permite usar la clase en cualquier lado y permite a su vez usar las propiedades con `@value(...)`
+- De la clase JWT se deben incluir en *Application.properties* las propiedades marcadas con `@Value("${security.jwt.otros-jwt}")`, en este caso son: key, issuer y ttlMillis.
 
 # Arquitectura REST
 

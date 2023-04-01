@@ -50,6 +50,7 @@ public class EmpleadoDAOImpl implements EmpleadoDAO{
         boolean result = false;
 
         // se consulta solo el correo y contraseña - esto es con hash
+        // esta consulta FROM es igual a SELECT * FROM
         String consulta = "FROM Empleado WHERE correo= :correoIn";
 
         // se usa setParameter para evitar inyeccion de codigo
@@ -84,6 +85,36 @@ public class EmpleadoDAOImpl implements EmpleadoDAO{
          */
 
         return result;
+    }
+
+    @Override
+    public Empleado obtenerEmpCredenciales(Empleado empIn) {
+
+        Boolean result=false;
+        Empleado empCompleto=null;
+
+        String consulta = "FROM Empleado WHERE correo= :correoIn";
+
+        // se usa setParameter para evitar inyeccion de codigo
+        List<Empleado> lista = entityMan.createQuery(consulta)
+        .setParameter("correoIn", empIn.getCorreo())
+        .getResultList();
+
+        // si la lista fuera vacia, daria nullpointerexception
+        if(!lista.isEmpty()){
+            empCompleto= lista.get(0);
+            Argon2 arg2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id);
+            // ahora se comparara el string de passw con el pass del emp traido
+            result = arg2.verify(empCompleto.getPassw(), empIn.getPassw().toCharArray());
+
+            System.out.println("CONTROLLER EMPLCompleto: result= "+result+" -->");
+            System.out.println(empCompleto.toString());
+
+            if(!result){
+                return null;
+            }
+        }
+        return empCompleto;
     }
     
 }

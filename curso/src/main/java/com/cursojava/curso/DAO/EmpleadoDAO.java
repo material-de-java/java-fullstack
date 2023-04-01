@@ -13,5 +13,7 @@ public interface EmpleadoDAO {
     void addEmpleado(Empleado emp);
 
     boolean verificarLogin(Empleado emp);
+
+    Empleado obtenerEmpCredenciales(Empleado empIncompleto);
     
 }
