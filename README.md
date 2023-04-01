@@ -169,12 +169,3 @@ Patron de arquitectura REST. Peticion por AJAX o Fetch que retorna json. Es much
 7. El servidor procesa el request y devuelve la respuesta
 
 ![Flujo inicio de Sesion](./media/flujo-inicio-sesion.png)
-
-
-
-
-
-
-
-
-
