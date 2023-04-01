@@ -16,8 +16,9 @@ Front: Simple con HTML, JS, Booststrp: 'https://startbootstrap.com/theme/sb-admi
 4. ORM con Hibernate
 5. Inicializar proyecto con: 'https://start.spring.io/'
 6. Dependencias con MAVEN (3.9.1) y Empaquetado WAR - openJDK 17.0.6
-7. Front Booststrap
+7. Front: Plantilla de Booststrap con HTML puro y js basico
 8. Mysql
+9. Sesiones con JWT
 
 ## Estrutura de archivos
 
@@ -151,8 +152,20 @@ Patron de arquitectura REST. Peticion por AJAX o Fetch que retorna json. Es much
     - telefono: BIGINT UNSIGNED
     - correo: VARCHAR(100)
     - passw: VARCHAR(255) (se almacena el hash)
-- 
 
+# Flujo inicio de Sesión por Tokens
+
+1. La acción inicia en el navegador al dar click
+2. Se envia una solicitud al servidor
+3. El servidor verifica y crea una sesión (**JWT**), luego retorna el token de la sesión
+   1. La sesión se crea y se envia al navegador, esto permite escalar horizaontalmente al no tener que guardar los dato en el servidor
+4. El navegador guarda el token
+   1. Esta información se envia el los request dentro de la cabeza como información de autenticación
+5. Por cada request que envia el navegador se envia el token al servidor
+6. El servidor verifica la sesión con el token
+7. El servidor procesa el request y devuelve la respuesta
+
+![Flujo inicio de Sesion](./media/flujo-inicio-sesion.png)
 
 
 
