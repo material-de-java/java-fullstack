@@ -21,9 +21,9 @@ public class AuthController {
 
     // empIncompleto solo tiene el correo y la passw, no contiene nada mas
     @RequestMapping(value = "api/login", method = RequestMethod.POST)
-    public boolean login(@RequestBody Empleado empIncompleto){
+    public String login(@RequestBody Empleado empIncompleto){
         
-        boolean result = false;
+        String tokenJWT=null;
         // usando correo y passw se obtiene el empleado con todos los datos
         Empleado empLogin = empleadoDAO.obtenerEmpCredenciales(empIncompleto);
         
@@ -31,12 +31,13 @@ public class AuthController {
         //result = empleadoDAO.verificarLogin(emp);
 
         if(empLogin!=null){
-            ujwt.create(empIncompleto.getId(), null);
+            tokenJWT = ujwt.create(String.valueOf(empLogin.getId()), empLogin.getCorreo());
         }
 
-        System.out.println("CONTROLLER AUTH: result="+result);
+        // se pueden retornar muchas mas cosas,
+        //ej. nivel de primilehios, permisos, informacion del empleado, etc
 
-        return result;
+        return tokenJWT;
     }
     
 }
