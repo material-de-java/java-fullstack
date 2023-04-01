@@ -23,7 +23,7 @@ public class AuthController {
     @RequestMapping(value = "api/login", method = RequestMethod.POST)
     public String login(@RequestBody Empleado empIncompleto){
         
-        String tokenJWT=null;
+        String tokenJWT="null";
         // usando correo y passw se obtiene el empleado con todos los datos
         Empleado empLogin = empleadoDAO.obtenerEmpCredenciales(empIncompleto);
         
@@ -33,6 +33,8 @@ public class AuthController {
         if(empLogin!=null){
             tokenJWT = ujwt.create(String.valueOf(empLogin.getId()), empLogin.getCorreo());
         }
+
+        System.out.println("AuthController token: "+tokenJWT);
 
         // se pueden retornar muchas mas cosas,
         //ej. nivel de primilehios, permisos, informacion del empleado, etc

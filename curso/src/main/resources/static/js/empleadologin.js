@@ -32,7 +32,7 @@ async function iniciarSesion(){
   console.log('EMPLEADO LOGIN: consulta ->');
   console.log(consulta);
   
-  if(consulta != null){
+  if(consulta != "null"){
 
     // guarda localmente el token enviado desde el servidor
     localStorage.token=consulta;

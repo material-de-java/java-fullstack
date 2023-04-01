@@ -43,7 +43,7 @@ public class EmpleadoDAOImpl implements EmpleadoDAO{
         entityMan.merge(emp);
     }
 
-    @Override
+    // se usaba cuando no estaba implementado el token
     @Transactional
     public boolean verificarLogin(Empleado emp) {
 
@@ -88,6 +88,7 @@ public class EmpleadoDAOImpl implements EmpleadoDAO{
     }
 
     @Override
+    @Transactional
     public Empleado obtenerEmpCredenciales(Empleado empIn) {
 
         Boolean result=false;
