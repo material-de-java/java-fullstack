@@ -1,4 +1,4 @@
-package com.cursojava.utils;
+package com.cursojava.curso.utils;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtBuilder;
