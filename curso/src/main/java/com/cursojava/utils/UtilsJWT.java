@@ -1,22 +1,27 @@
-package utils;
-
-import java.security.Key;
-import java.util.Date;
-
-import javax.crypto.spec.SecretKeySpec;
-import javax.xml.bind.DatatypeConverter;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
+package com.cursojava.utils;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
+import javax.crypto.spec.SecretKeySpec;
+import javax.xml.bind.DatatypeConverter;
+import java.security.Key;
+import java.util.Date;
+
+/**
+ * @author Mahesh
+ */
+@Component
 public class UtilsJWT {
 
+    //propiedades con @value deben ser creadas y 
+    // definidias tambien en el application.properties con el nombre $('nombre')
     @Value("${security.jwt.secret}")
     private String key;
 
@@ -30,7 +35,7 @@ public class UtilsJWT {
             .getLogger(UtilsJWT.class);
 
     /**
-     * Create a new token.
+     * Crea un nuevo token JWT, el cual es enviado al cliente
      *
      * @param id
      * @param subject
