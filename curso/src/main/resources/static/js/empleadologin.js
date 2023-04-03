@@ -5,6 +5,14 @@ $(document).ready(function() {
   //$('#tabla-empleados').DataTable();
 });
 
+function getHeaders() {
+  return {
+   'Accept': 'application/json',
+   'Content-Type': 'application/json',
+   'Authorization': localStorage.token
+ };
+}
+
 
 async function iniciarSesion(){
 
@@ -19,10 +27,7 @@ async function iniciarSesion(){
   // en fetch se usa el valor del RequestMapping del metodo del controller 
   const respuesta = await fetch('api/login', {
     method: 'POST',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
+    headers: getHeaders(),
     //capturar datos del formulario
     body: JSON.stringify(datosLogin)
   });

@@ -1,9 +1,26 @@
 // Call the dataTables jQuery plugin
 $(document).ready(function() {
+    verificarSesion();
     contentProfileEmail();
     cargarEmpleados();
     //$('#tabla-empleados').DataTable();
 });
+
+function logoutEmpleado(varLog){
+  localStorage.clear();
+  if (varLog=='logout'){
+    alert('Sesión cerrada!');
+  }
+
+  window.location.href = 'EmpleadoLogin.html';
+}
+
+function verificarSesion(){
+  if(localStorage.token==null || localStorage.correo==null){
+    alert('El Empleado aún no ha iniciado sesión!');
+    window.location.href = 'EmpleadoLogin.html';
+  }
+}
 
 
 function getHeaders() {
