@@ -5,14 +5,19 @@ $(document).ready(function() {
 });
 
 
+function getHeaders(){
+  return {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json',
+    'Authorization':localStorage.token
+  };
+}
+
 async function cargarEmpleados(){
   // en fetch se usa el valor del RequestMapping del metodo del controller 
   const respuesta = await fetch('api/empleados', {
     method: 'GET',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
+    headers: getHeaders(),
   });
 
   const empleados = await respuesta.json();
@@ -49,10 +54,7 @@ async function eliminarEmpleado(id){
         // en fetch se usa el valor del RequestMapping del metodo del controller 
     const respuesta = await fetch('api/empleados/'+id, {
       method: 'DELETE',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
+      headers: getHeaders(),
     });
     location.reload();
   }

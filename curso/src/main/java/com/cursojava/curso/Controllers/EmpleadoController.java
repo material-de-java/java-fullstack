@@ -2,6 +2,7 @@ package com.cursojava.curso.Controllers;
 
 import com.cursojava.curso.DAO.EmpleadoDAO;
 import com.cursojava.curso.Models.Empleado;
+import com.cursojava.curso.utils.UtilsJWT;
 
 import de.mkammerer.argon2.Argon2;
 import de.mkammerer.argon2.Argon2Factory;
@@ -9,10 +10,12 @@ import de.mkammerer.argon2.Argon2Factory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -23,6 +26,9 @@ public class EmpleadoController {
     @Autowired
     private EmpleadoDAO empleadoDAO;
 
+    @Autowired
+    private UtilsJWT utilJWT;
+
     @RequestMapping(value = "api/empleados/{id}", method = RequestMethod.GET)
     public Empleado getEmpleado(@PathVariable int id){
         Empleado us = new Empleado(id, "Pedro", "Picasso", 6177L, "pedro@picasso.net", "abc123");
@@ -30,7 +36,11 @@ public class EmpleadoController {
     }
 
     @RequestMapping(value = "api/empleados", method = RequestMethod.GET)
-    public List<Empleado> getListaUsuarios(){
+    public List<Empleado> getListaUsuarios(@RequestHeader(value="Authorization") String token){
+
+        if (validarToken(token)) {
+            return null;
+        }
 
         List<Empleado> us = empleadoDAO.getListaEmpleados();
         /*
@@ -66,14 +76,18 @@ public class EmpleadoController {
     }
 
     @RequestMapping(value = "api/empleados/{id}", method = RequestMethod.DELETE)
-    public void deleteEmpleado(@PathVariable int id){
+    public void deleteEmpleado(@PathVariable int id, @RequestHeader(value="Authorization") String token){
+        
+        if (validarToken(token)) {
+            return;
+        }
         empleadoDAO.deleteEmpleado(id);
     }
 
-    @RequestMapping(value = "api/usuario2")
-    public Empleado findEmpleado(){
-        Empleado us = new Empleado();
-        return us;
+    private boolean validarToken(String token){
+        // se obtiene el id del empleado, se puede verificar que el id exista
+        String empleadoId = utilJWT.getKey(token);
+        return empleadoId!=null;
     }
 
 }

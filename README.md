@@ -123,6 +123,7 @@ Patron de arquitectura Modelo, Vista y Controlador. Peticion por URL que retorna
 - En *Application.properties* se define la conexión a la BD, en ningun otro lado mas se debe hacer algo
 - La notación `@component` permite usar la clase en cualquier lado y permite a su vez usar las propiedades con `@value(...)`
 - De la clase JWT se deben incluir en *Application.properties* las propiedades marcadas con `@Value("${security.jwt.otros-jwt}")`, en este caso son: key, issuer y ttlMillis.
+- Para solicitar información el token desde java se usa un parametro con anotación `@RequestHeader(value="Authorization") String token`
 
 # Arquitectura REST
 

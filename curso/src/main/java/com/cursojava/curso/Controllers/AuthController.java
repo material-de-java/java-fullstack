@@ -17,7 +17,7 @@ public class AuthController {
     private EmpleadoDAO empleadoDAO;
 
     @Autowired
-    private UtilsJWT ujwt;
+    private UtilsJWT utilJWT;
 
     // empIncompleto solo tiene el correo y la passw, no contiene nada mas
     @RequestMapping(value = "api/login", method = RequestMethod.POST)
@@ -31,7 +31,8 @@ public class AuthController {
         //result = empleadoDAO.verificarLogin(emp);
 
         if(empLogin!=null){
-            tokenJWT = ujwt.create(String.valueOf(empLogin.getId()), empLogin.getCorreo());
+                        //token: key=id, value=correo
+            tokenJWT = utilJWT.create(String.valueOf(empLogin.getId()), empLogin.getCorreo());
         }
 
         System.out.println("AuthController token: "+tokenJWT);
