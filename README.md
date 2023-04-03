@@ -2,6 +2,8 @@
 
 Curso sobre como crear un sistema de usuario completo en Java con springboot, hibernate, JWT y API Rest con arquitectura MVC. CRUD con usarios y su inicio de sesión por hashes y tokens.
 
+Aca no se ve la creación de VISTA ya que se usa html + js. El siguiente paso sería implementarle algun framerwoek como React o Angular.
+
 ## Base
 
 Proyecto basado en: 'https://www.youtube.com/watch?v=7vHzVN0EiQc&ab_channel=ATLAcademy%28byLucasMoy%29' \
