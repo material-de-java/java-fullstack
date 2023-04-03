@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -38,7 +37,7 @@ public class EmpleadoController {
     @RequestMapping(value = "api/empleados", method = RequestMethod.GET)
     public List<Empleado> getListaUsuarios(@RequestHeader(value="Authorization") String token){
 
-        if (validarToken(token)) {
+        if (!validarToken(token)) {
             return null;
         }
 
@@ -87,6 +86,7 @@ public class EmpleadoController {
     private boolean validarToken(String token){
         // se obtiene el id del empleado, se puede verificar que el id exista
         String empleadoId = utilJWT.getKey(token);
+        System.out.println("CONTROLLEREmp - token: "+empleadoId);
         return empleadoId!=null;
     }
 

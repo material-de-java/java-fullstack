@@ -1,23 +1,29 @@
 // Call the dataTables jQuery plugin
 $(document).ready(function() {
+    contentProfileEmail();
     cargarEmpleados();
-  $('#tabla-empleados').DataTable();
+    //$('#tabla-empleados').DataTable();
 });
 
 
-function getHeaders(){
+function getHeaders() {
   return {
-    'Accept': 'application/json',
-    'Content-Type': 'application/json',
-    'Authorization':localStorage.token
-  };
+   'Accept': 'application/json',
+   'Content-Type': 'application/json',
+   'Authorization': localStorage.token
+ };
+}
+
+//actualiza el email del usuario en la barra
+function contentProfileEmail(){
+  document.getElementById('txt-id-empleado').outerHTML = ' '+localStorage.correo+' ';
 }
 
 async function cargarEmpleados(){
   // en fetch se usa el valor del RequestMapping del metodo del controller 
   const respuesta = await fetch('api/empleados', {
     method: 'GET',
-    headers: getHeaders(),
+    headers: getHeaders()
   });
 
   const empleados = await respuesta.json();
@@ -54,7 +60,7 @@ async function eliminarEmpleado(id){
         // en fetch se usa el valor del RequestMapping del metodo del controller 
     const respuesta = await fetch('api/empleados/'+id, {
       method: 'DELETE',
-      headers: getHeaders(),
+      headers: getHeaders()
     });
     location.reload();
   }
