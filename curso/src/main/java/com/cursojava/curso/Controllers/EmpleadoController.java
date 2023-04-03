@@ -35,9 +35,10 @@ public class EmpleadoController {
     }
 
     @RequestMapping(value = "api/empleados", method = RequestMethod.GET)
-    public List<Empleado> getListaUsuarios(@RequestHeader(value="Authorization") String token){
+    public List<Empleado> getListaEmpleados(@RequestHeader(value="Authorization") String token){
 
         if (!validarToken(token)) {
+            
             return null;
         }
 
@@ -74,20 +75,29 @@ public class EmpleadoController {
         return us;
     }
 
+    // busca y retorna un solo empleado
     @RequestMapping(value = "api/empleados/{id}", method = RequestMethod.DELETE)
-    public void deleteEmpleado(@PathVariable int id, @RequestHeader(value="Authorization") String token){
+    public boolean deleteEmpleado(@PathVariable int id, @RequestHeader(value="Authorization") String token){
         
-        if (validarToken(token)) {
-            return;
+        if (!validarToken(token)) {
+            return false;
         }
-        empleadoDAO.deleteEmpleado(id);
+        else{
+            empleadoDAO.deleteEmpleado(id);
+            return true;
+        }
     }
 
     private boolean validarToken(String token){
-        // se obtiene el id del empleado, se puede verificar que el id exista
-        String empleadoId = utilJWT.getKey(token);
-        System.out.println("CONTROLLEREmp - token: "+empleadoId);
-        return empleadoId!=null;
+        // se obtiene el id del empleado, se puede verificar que el id exista        
+        try {
+             String empleadoId = utilJWT.getKey(token);
+            System.out.println("CONTROLLEREmp - token: "+empleadoId);
+            return true;
+        } catch (Exception e) {
+            System.out.println("CONTROLLEREmp - token EXEPCION"+"\n"+e);
+            return false;
+        }
     }
 
 }

@@ -43,30 +43,37 @@ async function cargarEmpleados(){
     headers: getHeaders()
   });
 
-  const empleados = await respuesta.json();
 
-  console.log('#tabla-empleados');
-  console.log(empleados);
+  try {
 
-  let listadoHtml= '';
+    // respuesta del back
+    const empleados = await respuesta.json();
 
-  for (let emp of empleados) {
+    // si es null es porque java lo envio por la verificación fallida del token
+    // en caso de que sea null cierra la sesion
+    let listadoHtml= '';
 
+    for (let emp of empleados) {
+      // en caso de que algun campo mostrado sea null muestra un guion
+      let nombre = emp.nombre == null ? '-' : emp.nombre
+      let apellido = emp.apellido == null ? '-' : emp.apellido
+      let telefono = emp.telefono == null ? '-' : emp.telefono
+      let correo = emp.correo == null ? '-' : emp.correo
 
-    // en caso de que algun campo mostrado sea null muestra un guion
-    let nombre = emp.nombre == null ? '-' : emp.nombre
-    let apellido = emp.apellido == null ? '-' : emp.apellido
-    let telefono = emp.telefono == null ? '-' : emp.telefono
-    let correo = emp.correo == null ? '-' : emp.correo
+      let htmlOnClick=' onclick="eliminarEmpleado('+emp.id+')" ';
+      let botonDelete='<a href="#"'+htmlOnClick+'class="btn btn-danger btn-circle"> <i class="fas fa-trash"></i> </a>';
+      let empleadoHtml = '<tr> <td>'+emp.id+'</td> <td>'+nombre+'</td> <td>'+apellido+'</td> <td>'+telefono+'</td> <td>'+correo+'</td> <td> '+botonDelete+' </td> </tr>';
 
-    let htmlOnClick=' onclick="eliminarEmpleado('+emp.id+')" ';
-    let botonDelete='<a href="#"'+htmlOnClick+'class="btn btn-danger btn-circle"> <i class="fas fa-trash"></i> </a>';
-    let empleadoHtml = '<tr> <td>'+emp.id+'</td> <td>'+nombre+'</td> <td>'+apellido+'</td> <td>'+telefono+'</td> <td>'+correo+'</td> <td> '+botonDelete+' </td> </tr>';
+      listadoHtml += empleadoHtml;    
+    }
+    document.querySelector('#tabla-empleados tbody').outerHTML = listadoHtml;
 
-    listadoHtml += empleadoHtml;    
+  } catch (error) {
+    //nunca deberia llegar aca ya que se verificar la sesion primero
+    console.log('error token ---');
+    logoutEmpleado('errorLogin');
   }
-
-  document.querySelector('#tabla-empleados tbody').outerHTML = listadoHtml;
+  
 }
 
 async function eliminarEmpleado(id){
@@ -79,7 +86,14 @@ async function eliminarEmpleado(id){
       method: 'DELETE',
       headers: getHeaders()
     });
-    location.reload();
+
+    try {
+      const resultado = await respuesta.json();  
+      location.reload();
+    } catch (error) {
+      console.log('error token ---');
+      logoutEmpleado('errorLogin');
+    }    
   }
 
 }
